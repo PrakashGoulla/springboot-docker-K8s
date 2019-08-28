@@ -1,0 +1,10 @@
+verison: '2.1'
+services:
+  registry:
+    image:
+    ports:
+      - 8761:8761
+  products:
+    image:
+    ports:
+      - 8010:8010
