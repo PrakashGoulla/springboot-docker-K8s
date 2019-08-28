@@ -1,16 +1,17 @@
 Code Modularity + Maintainability
-  Why:
-   	 Code written as independent modules are best suited for porting, which enables us to plug in/out different implementations for the same functionality. Modular code also lets us develop code using various technologies that best suits any particular module.
-   	 Easy to reuse across the applications. The lesser the code is dependent on other code easier it will be make changes.
-     Keeping the code modular also helps in easily scaling any particular module.
-   	 With modularity the number of lines/files in the code will be reduced so it will be easier to understand, debug, test and even refactor.
-     Keeping the code modular helps new developers to quickly get up to speed with the development.
 
+Why:
+- Code written as independent modules are best suited for porting, which enables us to plug in/out different implementations for the same functionality. 
+- Modular code also lets us develop code using various technologies that best suits any particular module.
+- Easy to reuse across the applications. The lesser the code is dependent on other code easier it will be make changes.
+- Keeping the code modular also helps in easily scaling any particular module.
+- With modularity the number of lines/files in the code will be reduced so it will be easier to understand, debug, test and even refactor.
+- Keeping the code modular helps new developers to quickly get up to speed with the development.
 
-  How:
-     Any repeating code shoud be moved to util/helper classes. Large pieces of code should be broken down into smaller functions/methods.
-   	 Development should be started after clearly boiling down all the requirements, that helps in writing independent modular code from the beginning.
-     Encapsulate the code of a module and expose only the interfaces to outside world, with this the clients can stay uneffected if any changes are made in the module.
+How:
+- Any repeating code shoud be moved to util/helper classes. Large pieces of code should be broken down into smaller functions/methods.
+- Development should be started after clearly boiling down all the requirements, that helps in writing independent modular code from the beginning.
+- Encapsulate the code of a module and expose only the interfaces to outside world, with this the clients can stay uneffected if any changes are made in the module.
 
      In Java, Modularity can be achieved by making use of Java 9 modules.
 
