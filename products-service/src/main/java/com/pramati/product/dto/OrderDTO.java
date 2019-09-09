@@ -1,8 +1,8 @@
-package com.pramati.product.model;
+package com.pramati.product.dto;
 
 import java.sql.Date;
 
-public class Order {
+public class OrderDTO {
 
 	private Long id;
 

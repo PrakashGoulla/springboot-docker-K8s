@@ -1,17 +1,17 @@
-DROP TABLE IF EXISTS product;
- 
-CREATE TABLE product (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  name VARCHAR(250) NOT NULL,
-  availableQuantity INT DEFAULT NULL,
-  price DOUBLE DEFAULT NULL,
-  productCode VARCHAR(250) NOT NULL,
-  productDescription VARCHAR(250) NOT NULL,
-  productCategory VARCHAR(250) NOT NULL,
-  imageUrl VARCHAR(250) NOT NULL
-);
- 
-INSERT INTO product (name, availableQuantity, price, productCode, productDescription, imageUrl, productCategory) VALUES
-  ('iPhone', 10, 28000, '128893', 'iphone test description', 'http://testImage.com/', 'electronics'),
-  ('Lee', 10, 2500, '329873099', 'Lee test description', 'http://testImage.com/', 'Clothing'),
-  ('Pressure Cooker', 10, 1000, '5748843', 'cooker test description', 'http://testImage.com/', 'Kitchen');
+INSERT INTO `products`.`category` (`id`, `Name`, `Description`, `Active`) VALUES ('1', 'Mobiles', '', '1');
+INSERT INTO `products`.`category` (`id`, `Name`, `Description`, `Active`) VALUES ('2', 'Clothing', '', '1');
+INSERT INTO `products`.`category` (`id`, `Name`, `Description`, `Active`) VALUES ('3', 'Eelectorincs', '', '1');
+INSERT INTO `products`.`category` (`id`, `Name`, `Description`, `Active`) VALUES ('4', 'Home', '', '1');
+
+
+INSERT INTO `products`.`product` (`id`, `Name`, `Description`, `Category_id`, `Size`, `Color`, `Discount`, `ImageUrl`, `AvailableQuantity`, `Price`) 
+VALUES ('1', 'iPhone', 'iPhone desciption', '1', '', 'Grey', '10', 'http://imageurl.com', '10', '38992');
+
+INSERT INTO `products`.`product` (`id`, `Name`, `Description`, `Category_id`, `Size`, `Color`, `Discount`, `ImageUrl`, `AvailableQuantity`, `Price`) 
+VALUES ('2', 'Levis', 'Levis desciption', '2', '', 'Black', '10', 'http://imageurl2.com', '10', '782');
+
+INSERT INTO `products`.`product` (`id`, `Name`, `Description`, `Category_id`, `Size`, `Color`, `Discount`, `ImageUrl`, `AvailableQuantity`, `Price`) 
+VALUES ('3', 'Dell Laptop', 'Dell desciption', '3', '', 'Black', '10', 'http://imageurl3.com', '10', '38992');
+
+INSERT INTO `products`.`product` (`id`, `Name`, `Description`, `Category_id`, `Size`, `Color`, `Discount`, `ImageUrl`, `AvailableQuantity`, `Price`) 
+VALUES ('4', 'iPhone', 'iPhone desciption', '1', '', 'Grey', '10', 'http://imageurl.com', '10', '38992');

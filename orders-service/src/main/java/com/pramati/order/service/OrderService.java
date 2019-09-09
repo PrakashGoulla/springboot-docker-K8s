@@ -1,17 +1,20 @@
 package com.pramati.order.service;
 
 import java.util.List;
+import java.util.Optional;
 
-import com.pramati.order.model.Order;
+import com.pramati.order.dto.OrderRequest;
+import com.pramati.order.dto.OrderResponse;
+import com.pramati.order.entity.Order;
 
 public interface OrderService {
-	
-	public Order getOrderByProductId(String productId);
-	
-	public List<Order> getAllOrders();
 
-	public Order createOrder(Order order);
-	
+	public Optional<OrderResponse> getOrderByProductId(int productId);
+
+	public List<OrderResponse> getAllOrders();
+
+	public OrderResponse createOrder(OrderRequest order);
+
 	public Order updateOrder(Order order);
-	
+
 }

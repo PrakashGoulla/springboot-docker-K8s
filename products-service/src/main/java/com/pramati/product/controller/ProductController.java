@@ -2,42 +2,41 @@ package com.pramati.product.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pramati.product.model.Product;
+import com.pramati.product.dto.ProductRequest;
+import com.pramati.product.dto.ProductResponse;
+import com.pramati.product.exception.ProductNotFoundException;
 import com.pramati.product.service.ProductService;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping(path = "/api/v1")
 public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-	
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public List<Product> getAllProducts() {
+
+	@RequestMapping(value = "/product", method = RequestMethod.GET)
+	public List<ProductResponse> getAllProducts() {
 		return productService.getAllProducts();
 	}
 
-	@RequestMapping(value = "", params="code", method = RequestMethod.GET)
-	public Product getProductByCode(@RequestParam String code) {
-		return productService.getProductByCode(code);
+	@RequestMapping(value = "/product/{code}", method = RequestMethod.GET)
+	public ProductResponse getProductById(@PathVariable("code") int code) {
+		return productService.getProductById(code)
+				.orElseThrow(() -> new ProductNotFoundException("No Product found with given Id"));
 	}
 
-	@RequestMapping(value = "/{category}", method = RequestMethod.GET)
-	public List<Product> getProductsByCategory(@PathVariable String category) {
-		return productService.getProductsByCategory(category);
-	}
-
-
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public Product createProduct() {
-		return null;
+	@RequestMapping(value = "/product", method = RequestMethod.POST)
+	public ProductResponse createProduct(@RequestBody @Valid ProductRequest product) {
+		return productService.addProduct(product);
 	}
 
 }

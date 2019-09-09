@@ -1,57 +1,42 @@
-package com.pramati.order.model;
+package com.pramati.order.dto;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class OrderResponse {
+	
+	private int id;
 
-@Entity
-@Table(name = "orders")
-public class Order {
+	private int productId;
 
-	@Id
-	@GeneratedValue
-	private Long id;
+	private double amountPaid;
 
-	@Column(name = "product_id")
-	private Long productId;
-
-	@Column(name = "amountpaid")
-	private Double amountPaid;
-
-	@Column(name = "orderstatus")
 	private String orderStatus;
 
-	@Column(name = "orderdate")
 	private Date orderedDate;
 
-	@Column(name = "paymentstatus")
 	private String paymentStatus;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Long getProductId() {
+	public int getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Long productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 
-	public Double getAmountPaid() {
+	public double getAmountPaid() {
 		return amountPaid;
 	}
 
-	public void setAmountPaid(Double amountPaid) {
+	public void setAmountPaid(double amountPaid) {
 		this.amountPaid = amountPaid;
 	}
 
@@ -79,4 +64,6 @@ public class Order {
 		this.paymentStatus = paymentStatus;
 	}
 	
+	
+
 }

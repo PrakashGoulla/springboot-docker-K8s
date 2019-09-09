@@ -1,3 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: products
+  template:
+    metadata:
+      labels:
+        app: products
+    spec:
+      containers:
+      - name: products
+        image: gcr.io/bootapp-252104/product-service
+        imagePullPolicy: Never
+        ports:
+          - name: http
+            containerPort: 8010
+        env:
+        - name: DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: USER_NAME
+        - name: DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: USER_PASSWORD
+---
 apiVersion: v1
 kind: Service
 metadata:

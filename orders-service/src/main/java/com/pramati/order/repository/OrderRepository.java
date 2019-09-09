@@ -1,17 +1,16 @@
 package com.pramati.order.repository;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import com.pramati.order.entity.Order;
 
-import com.pramati.order.model.Order;
-
-@Repository
-public interface OrderRepository extends CrudRepository<Order, Long> {
+public interface OrderRepository {
 
 	public List<Order> findAll();
 
-	public Order findOrderByProductId(String productId);
+	public Optional<Order> findOrderByProductId(int productId);
+	
+	public Order createOrder(Order order);
 
 }
