@@ -37,8 +37,6 @@ public class OrderController {
 	public OrderResponse createOrder(@Valid @RequestBody OrderRequest order) {
 		return orderService.createOrder(order);
 	}
-
-	
 	
 	@RequestMapping(value = "/order", method = RequestMethod.PUT)
 	public Order updateOrder(@Valid @RequestBody Order order) {

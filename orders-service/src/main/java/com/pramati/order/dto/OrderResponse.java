@@ -1,9 +1,9 @@
 package com.pramati.order.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class OrderResponse {
-	
+
 	private int id;
 
 	private int productId;
@@ -63,7 +63,5 @@ public class OrderResponse {
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
-	
-	
 
 }

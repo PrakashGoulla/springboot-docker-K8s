@@ -9,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CascadeType;
-
 @Entity
 @Table(name = "product")
 public class Product {
@@ -26,7 +24,7 @@ public class Product {
 	private int availableQuantity;
 
 	@Column(name = "price")
-	private Double price;
+	private double price;
 
 	@Column(name = "Description")
 	private String productDescription;
@@ -67,11 +65,11 @@ public class Product {
 		this.availableQuantity = availableQuantity;
 	}
 
-	public Double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

@@ -1,14 +1,14 @@
 package com.pramati.product.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class OrderDTO {
 
-	private Long id;
+	private long id;
 
-	private Long productId;
+	private long productId;
 
-	private Double amountPaid;
+	private double amountPaid;
 
 	private String orderStatus;
 
@@ -24,19 +24,19 @@ public class OrderDTO {
 		this.id = id;
 	}
 
-	public Long getProductId() {
+	public long getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Long productId) {
+	public void setProductId(long productId) {
 		this.productId = productId;
 	}
 
-	public Double getAmountPaid() {
+	public double getAmountPaid() {
 		return amountPaid;
 	}
 
-	public void setAmountPaid(Double amountPaid) {
+	public void setAmountPaid(double amountPaid) {
 		this.amountPaid = amountPaid;
 	}
 
