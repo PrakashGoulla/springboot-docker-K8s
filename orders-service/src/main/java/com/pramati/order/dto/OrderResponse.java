@@ -15,6 +15,8 @@ public class OrderResponse {
 	private Date orderedDate;
 
 	private String paymentStatus;
+	
+	private Product product;
 
 	public int getId() {
 		return id;

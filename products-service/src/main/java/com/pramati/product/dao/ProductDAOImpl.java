@@ -38,11 +38,11 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public Optional<ProductResponse> findById(int id) {
-		Product product = productRepository.findById(id).get();
-		ProductResponse response = mapper.map(product, ProductResponse.class);
-		OrderDTO orderHistory = orderService.getOrderHistory(product.getId());
-		response.setOrderHistory(orderHistory);
-		return Optional.of(response);
+		Optional<ProductResponse> response = productRepository.findById(id)
+				.map(product -> mapper.map(product, ProductResponse.class));
+		OrderDTO orderHistory = orderService.getOrderHistory(response.get().getId());
+		response.get().setOrderHistory(orderHistory);
+		return response;
 	}
 
 	@Override

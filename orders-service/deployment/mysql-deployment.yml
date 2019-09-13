@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/orders/data"
+    path: "/var/lib/orders/data"
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1

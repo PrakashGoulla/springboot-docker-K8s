@@ -6,8 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Optional;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,7 +44,7 @@ public class ProductControllerTest {
 		product.setName("test");
 		product.setId(1);
 
-		when(productService.getProductById(product.getId())).thenReturn(Optional.of(product));
+		when(productService.getProductById(product.getId())).thenReturn((product));
 
 		mockmvc.perform(get("/api/v1/product/" + product.getId()))
 				.andExpect(jsonPath("$.name").value(product.getName())).andExpect(status().isOk());

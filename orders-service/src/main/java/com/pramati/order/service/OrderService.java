@@ -17,4 +17,6 @@ public interface OrderService {
 
 	public Order updateOrder(Order order);
 
+	public OrderResponse getOrder(long id);
+
 }

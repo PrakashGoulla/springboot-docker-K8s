@@ -19,7 +19,7 @@ public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
 	@Column(name = "product_id")
 	private int productId;
@@ -40,11 +40,11 @@ public class Order {
 	@Column(name = "orderprice")
 	private double orderPrice;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

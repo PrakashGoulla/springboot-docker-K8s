@@ -38,10 +38,9 @@ metadata:
 spec:
   selector:
     app: products
-  type: NodePort
+  type: LoadBalancer
   ports:
   - name: http
     port: 8080
     targetPort: 8010
-    nodePort: 30036
     protocol: TCP

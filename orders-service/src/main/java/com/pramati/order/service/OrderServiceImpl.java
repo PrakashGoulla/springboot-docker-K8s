@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import com.pramati.order.dao.OrderDAO;
 import com.pramati.order.dto.OrderRequest;
@@ -39,6 +40,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order updateOrder(Order order) {
 		return new Order();
+	}
+
+	@Override
+	public OrderResponse getOrder(long id) {
+		Assert.isTrue(id > 0, "Invalid order id sent in the request");
+		return orderDao.getOrder(id);
 	}
 
 }

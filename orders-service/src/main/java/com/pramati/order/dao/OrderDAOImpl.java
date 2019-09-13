@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,8 +16,10 @@ import com.pramati.order.dto.OrderResponse;
 import com.pramati.order.dto.OrderStatus;
 import com.pramati.order.dto.ProductDTO;
 import com.pramati.order.entity.Order;
+import com.pramati.order.exception.OrderNotFoundException;
 import com.pramati.order.repository.JPAOrderRepository;
 
+@Transactional
 @Component
 public class OrderDAOImpl implements OrderDAO {
 
@@ -30,17 +34,15 @@ public class OrderDAOImpl implements OrderDAO {
 
 	@Override
 	public Optional<OrderResponse> getOrderByProductId(int productId) {
-		Order order = orderRepository.findFirstByProductId(productId).get();
-		OrderResponse response = mapper.map(order, OrderResponse.class);
-		return Optional.of(response);
+		Optional<OrderResponse> response = orderRepository.findFirstByProductId(productId)
+				.map(order -> mapper.map(order, OrderResponse.class));
+		return response;
 	}
 
 	@Override
 	public List<OrderResponse> getAllOrders() {
-
 		return orderRepository.findAll().stream().map(order -> mapper.map(order, OrderResponse.class))
 				.collect(Collectors.toList());
-
 	}
 
 	@Override
@@ -60,6 +62,16 @@ public class OrderDAOImpl implements OrderDAO {
 
 			response = mapper.map(createdOrder, OrderResponse.class);
 		}
+
+		return response;
+	}
+
+	@Override
+	public OrderResponse getOrder(long id) {
+		OrderResponse response = new OrderResponse();
+		Order order = orderRepository.findById(id)
+				.orElseThrow(() -> new OrderNotFoundException("No order found with give Order id"));
+		response = mapper.map(order, OrderResponse.class);
 
 		return response;
 	}

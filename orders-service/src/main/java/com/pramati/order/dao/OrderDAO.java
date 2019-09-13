@@ -14,4 +14,6 @@ public interface OrderDAO {
 
 	OrderResponse createOrder(OrderRequest order);
 
+	OrderResponse getOrder(long id);
+
 }

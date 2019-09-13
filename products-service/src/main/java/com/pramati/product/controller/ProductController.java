@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pramati.product.dto.ProductRequest;
 import com.pramati.product.dto.ProductResponse;
-import com.pramati.product.exception.ProductNotFoundException;
 import com.pramati.product.service.ProductService;
 
 @RestController
@@ -30,8 +29,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/product/{code}", method = RequestMethod.GET)
 	public ProductResponse getProductById(@PathVariable("code") int code) {
-		return productService.getProductById(code)
-				.orElseThrow(() -> new ProductNotFoundException("No Product found with given Id"));
+		return productService.getProductById(code);
 	}
 
 	@RequestMapping(value = "/product", method = RequestMethod.POST)

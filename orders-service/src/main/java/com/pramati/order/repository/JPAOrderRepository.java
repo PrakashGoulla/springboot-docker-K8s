@@ -14,5 +14,7 @@ public interface JPAOrderRepository extends CrudRepository<Order, Long> {
 	public List<Order> findAll();
 
 	public Optional<Order> findFirstByProductId(int productId);
+	
+	public Optional<Order> findById(long id);
 
 }

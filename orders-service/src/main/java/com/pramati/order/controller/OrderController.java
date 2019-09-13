@@ -5,10 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pramati.order.dto.OrderRequest;
@@ -28,8 +28,8 @@ public class OrderController {
 		return orderService.getAllOrders();
 	}
 
-	@RequestMapping(value = "/order", params = "productId", method = RequestMethod.GET)
-	public OrderResponse getOrdersByProductId(@RequestParam(name = "productId") int productId) {
+	@RequestMapping(value = "/order/history/{productId}", method = RequestMethod.GET)
+	public OrderResponse getOrdersByProductId(@PathVariable(name = "productId") int productId) {
 		return orderService.getOrderByProductId(productId).get();
 	}
 
@@ -37,10 +37,15 @@ public class OrderController {
 	public OrderResponse createOrder(@Valid @RequestBody OrderRequest order) {
 		return orderService.createOrder(order);
 	}
-	
+
 	@RequestMapping(value = "/order", method = RequestMethod.PUT)
 	public Order updateOrder(@Valid @RequestBody Order order) {
 		return orderService.updateOrder(order);
+	}
+
+	@RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
+	public OrderResponse findOrderByOrderId(@PathVariable(name = "id") long id) {
+		return orderService.getOrder(id);
 	}
 
 }
