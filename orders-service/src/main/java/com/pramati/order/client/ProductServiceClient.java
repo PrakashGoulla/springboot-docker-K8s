@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pramati.order.dto.ProductDTO;
 
-@FeignClient(name = "products", url = "http://products-svc:8080", fallback = ProductServiceClientFallback.class)
+@FeignClient(name = "products", url = "http://localhost:8010", fallback = ProductServiceClientFallback.class)
 public interface ProductServiceClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/api/v1/product/{productId}")

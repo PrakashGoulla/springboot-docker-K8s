@@ -53,4 +53,12 @@ public class ProductDAOImpl implements ProductDAO {
 		return response;
 	}
 
+	@Override
+	public ProductResponse update(ProductRequest product) {
+		Product productEntity = mapper.map(product, Product.class);
+		Product createdProduct = productRepository.save(productEntity);
+		ProductResponse response = mapper.map(createdProduct, ProductResponse.class);
+		return response;
+	}
+
 }

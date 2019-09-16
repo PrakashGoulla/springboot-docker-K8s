@@ -26,7 +26,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductResponse getProductById(int id) {
 		Assert.isTrue(id > 0, "Invalid product id sent in the request");
-		return productDao.findById(id).orElseThrow(() -> new ProductNotFoundException("No Product found with given Id"));
+		return productDao.findById(id)
+				.orElseThrow(() -> new ProductNotFoundException("No Product found with given Id"));
 	}
 
 	@Override
@@ -37,6 +38,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductResponse addProduct(ProductRequest product) {
 		return productDao.create(product);
+	}
+
+	@Override
+	public ProductResponse updateProduct(ProductRequest product) {
+		Assert.isTrue(product.getId() > 0, "Invalid product id sent in the request");
+		return productDao.update(product);
 	}
 
 }

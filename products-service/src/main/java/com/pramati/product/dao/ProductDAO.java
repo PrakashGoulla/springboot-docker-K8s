@@ -14,4 +14,6 @@ public interface ProductDAO {
 
 	public ProductResponse create(ProductRequest product);
 
+	public ProductResponse update(ProductRequest product);
+
 }
