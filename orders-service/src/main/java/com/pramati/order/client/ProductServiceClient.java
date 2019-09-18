@@ -13,7 +13,7 @@ public interface ProductServiceClient {
 	@RequestMapping(method = RequestMethod.GET, value = "/api/v1/product/{productId}")
 	ProductDTO getProduct(@PathVariable(value = "productId") int productId);
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/api/v1/product")
+	@RequestMapping(method = RequestMethod.PUT, value = "/api/v1/product/{id}")
 	ProductDTO updateProductQuantity(ProductDTO product);
 
 }

@@ -8,7 +8,7 @@ import com.pramati.order.dto.OrderResponse;
 
 public interface OrderDAO {
 
-	Optional<OrderResponse> getOrderByProductId(int productId);
+	OrderResponse getOrderByProductId(int productId);
 
 	List<OrderResponse> getAllOrders();
 

@@ -5,10 +5,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pramati.product.dto.ProductRequest;
@@ -22,24 +24,24 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping(value = "/product", method = RequestMethod.GET)
+	@GetMapping(value = "/product")
 	public List<ProductResponse> getAllProducts() {
 		return productService.getAllProducts();
 	}
 
-	@RequestMapping(value = "/product/{code}", method = RequestMethod.GET)
+	@GetMapping(value = "/product/{code}")
 	public ProductResponse getProductById(@PathVariable("code") int code) {
 		return productService.getProductById(code);
 	}
 
-	@RequestMapping(value = "/product", method = RequestMethod.POST)
+	@PostMapping(value = "/product")
 	public ProductResponse createProduct(@RequestBody @Valid ProductRequest product) {
 		return productService.addProduct(product);
 	}
 
-	@RequestMapping(value = "/product/{id}", method = RequestMethod.PUT)
-	public ProductResponse updateProduct(@RequestBody @Valid ProductRequest product) {
-		return productService.updateProduct(product);
+	@PutMapping(value = "/product/{id}")
+	public ProductResponse updateProduct(@RequestBody @Valid ProductRequest product, @PathVariable("id") int id) {
+		return productService.updateProduct(product, id);
 	}
 
 }

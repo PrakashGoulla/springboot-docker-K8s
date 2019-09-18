@@ -30,7 +30,7 @@ public class OrderController {
 
 	@RequestMapping(value = "/order/history/{productId}", method = RequestMethod.GET)
 	public OrderResponse getOrdersByProductId(@PathVariable(name = "productId") int productId) {
-		return orderService.getOrderByProductId(productId).get();
+		return orderService.getOrderByProductId(productId);
 	}
 
 	@RequestMapping(value = "/order", method = RequestMethod.POST)

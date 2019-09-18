@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDao;
 
 	@Override
-	public Optional<OrderResponse> getOrderByProductId(int productId) {
+	public OrderResponse getOrderByProductId(int productId) {
 		return orderDao.getOrderByProductId(productId);
 	}
 

@@ -9,7 +9,7 @@ import com.pramati.order.entity.Order;
 
 public interface OrderService {
 
-	public Optional<OrderResponse> getOrderByProductId(int productId);
+	public OrderResponse getOrderByProductId(int productId);
 
 	public List<OrderResponse> getAllOrders();
 

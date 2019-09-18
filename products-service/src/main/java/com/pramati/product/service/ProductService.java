@@ -16,6 +16,6 @@ public interface ProductService {
 
 	ProductResponse addProduct(ProductRequest productEntity);
 
-	public ProductResponse updateProduct(ProductRequest product);
+	public ProductResponse updateProduct(ProductRequest product, int id);
 
 }

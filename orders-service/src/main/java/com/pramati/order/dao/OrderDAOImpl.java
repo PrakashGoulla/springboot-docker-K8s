@@ -33,9 +33,9 @@ public class OrderDAOImpl implements OrderDAO {
 	private ProductServiceClient productService;
 
 	@Override
-	public Optional<OrderResponse> getOrderByProductId(int productId) {
-		Optional<OrderResponse> response = orderRepository.findFirstByProductId(productId)
-				.map(order -> mapper.map(order, OrderResponse.class));
+	public OrderResponse getOrderByProductId(int productId) {
+		OrderResponse response = orderRepository.findFirstByProductId(productId)
+				.map(order -> mapper.map(order, OrderResponse.class)).orElse(null);
 		return response;
 	}
 

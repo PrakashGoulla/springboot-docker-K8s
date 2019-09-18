@@ -41,9 +41,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductResponse updateProduct(ProductRequest product) {
-		Assert.isTrue(product.getId() > 0, "Invalid product id sent in the request");
-		return productDao.update(product);
+	public ProductResponse updateProduct(ProductRequest product, int id) {
+		Assert.isTrue(id > 0, "Invalid product id sent in the request");
+		return productDao.update(product, id);
 	}
 
 }
